@@ -124,36 +124,36 @@ def get_model_advanced(train_data_loader=None, n_epochs=10, lr=1e-4, config=None
 # sample invocation torch.hub.load(myrepo,'test_model',model1=model,test_data_loader=test_data_loader,force_reload=True)
 
 
+# sample invocation torch.hub.load(myrepo,'test_model',model1=model,test_data_loader=test_data_loader,force_reload=True)
 def test_model(model1=None, test_data_loader=None):
 
-    accuracy_val, precision_val, recall_val, f1score_val = 0, 0, 0, 0
-    # write your code here as per instructions
-    # ... your code ...
-    # ... your code ...
-    # ... and so on ...
-    # calculate accuracy, precision, recall and f1score
+   accuracy_val, precision_val, recall_val, f1score_val = 0, 0, 0, 0
+   # write your code here as per instructions
+   # ... your code ...
+   # ... your code ...
+   # ... and so on ...
+   # calculate accuracy, precision, recall and f1score
 
-    size = len(test_data_loader.dataset)
-    num_batches = len(test_data_loader)
-    model1.eval()
-    test_loss, correct = 0, 0
+   size = len(test_data_loader.dataset)
+   num_batches = len(test_data_loader)
+   model1.eval()
+   test_loss, correct = 0, 0
 
-    with torch.no_grad():
-        for X, y in test_data_loader:
-            X, y = X.to(device), y.to(device)
-            pred = model1(X)
-            test_loss += loss_function(pred, y).item()
-            correct += (pred.argmax(1) == y).type(torch.float).sum().item()
-    test_loss /= num_batches
-    correct /= size
+   with torch.no_grad():
+    for X, y in test_data_loader:
+      X, y = X.to(device), y.to(device)
+      pred = model1(X)
+      test_loss += loss_function(pred, y).item()
+      correct += (pred.argmax(1) == y).type(torch.float).sum().item()
+      test_loss /= num_batches
+      correct /= size
 
 
-    print(f"Test Error: \nAccuracy: {(100*correct):>0.1f}%, Avg loss: {test_loss:>8f} \n")
-
+    print(f"Test Error: \n Accuracy: {(100*correct):>0.1f}%, Avg loss: {test_loss:>8f} \n")
 
     accuracy_val = 100*correct
 
     # f1score_val = 2*(recall_val * precision_val) / (recall_val + precision_val)
-    print('Returning metrics... (rollnumber: cs19b001)')
+    print('Returning metrics... (rollnumber: cs19b035)')
 
     return accuracy_val, precision_val, recall_val, f1score_val
